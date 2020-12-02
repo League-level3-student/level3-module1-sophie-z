@@ -14,15 +14,15 @@ public class DynamicIntegerArray {
 	public void add(int v) {
 		//A. create and initialize a new int array to be one 
 		//   element longer than the member array
-		int[] ints2 = new int[1];
+		int[] ints2 = new int[ints.length+1];
 		//B. set the last element of your new array to 
 		//   the value passed into the method
-		v = ints2[0];
+		ints2[ints2.length-1] = v;
 		//C. iterate through the member array and 
 		//   copy every element from the member array 
 		//   to the new array
 		for(int i = 0; i<ints.length; i++) {
-			ints[i] = ints2[i];
+			ints2[i] = ints[i];
 		}
 		//D. set the member array equal to the new array.
 		ints = ints2;
@@ -31,7 +31,7 @@ public class DynamicIntegerArray {
 	//4. Complete the steps in the get method
 	public int get(int location) {
 		//A. Return the value of the member array at the location passed in
-		return 0;
+		return ints[location];
 	}
 	
 	//5. Run the DynamicArrayTest to see if you are correct so far.
