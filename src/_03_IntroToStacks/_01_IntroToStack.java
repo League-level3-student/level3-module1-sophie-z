@@ -22,8 +22,8 @@ public class _01_IntroToStack {
 		//   between the two numbers entered by the user, print it to the screen.) 
 		int number1 = Integer.parseInt(answer1);
 		int number2 = Integer.parseInt(answer2);
-		int smaller;
-		int bigger;
+		int smaller = 0;
+		int bigger = 0;
 		if(number1<number2) {
 			smaller = number1;
 			bigger = number2;
@@ -32,10 +32,10 @@ public class _01_IntroToStack {
 			smaller = number2;
 			bigger = number1;
 		}
-		for(int i = 0; i<100; i++) {
-			doubles.pop();
-			if(doubles>smaller && doubles<bigger) {
-				
+		while(!doubles.isEmpty()) {
+			Double popped = doubles.pop();
+			if(popped>smaller && popped<bigger) {
+				System.out.println("Integers between " + smaller + "and" + bigger + ": " + popped);
 			}
 		}
 		
