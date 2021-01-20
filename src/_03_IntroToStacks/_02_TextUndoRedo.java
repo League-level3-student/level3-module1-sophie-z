@@ -3,6 +3,7 @@ package _03_IntroToStacks;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +22,8 @@ public class _02_TextUndoRedo implements KeyListener {
 	 * off the Stack and added back to the JLabel.
 	 * 
 	 * */
+	Stack <Character> typed = new Stack <Character>();
+	Stack <Character> deleted = new Stack <Character>();
 	
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
@@ -38,19 +41,21 @@ public class _02_TextUndoRedo implements KeyListener {
 	public static void main(String[] args) {
 		 _02_TextUndoRedo tur = new _02_TextUndoRedo();
 		 tur.setup();
+		 tur.makeLabel();
 	}
 	
-	String key = "";
+	void makeLabel() {
+		String key = "";
+		for(int i = 0; i<typed.size(); i++) {
+			key+=typed.get(i);
+		}
+		label.setText(key);
+	}
 	
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		char keypressed = arg0.getKeyChar();
-		key = key + Character.toString(keypressed);
-		if(key.equals("backspace")) {
-			
-		}
-		label.setText(key);
+		
 	}
 
 	@Override
@@ -62,7 +67,15 @@ public class _02_TextUndoRedo implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		typed.push(arg0.getKeyChar());
+		makeLabel();
+		frame.pack();
+		if(arg0.getKeyChar()==KeyEvent.VK_BACK_SPACE) {
+			Character backspaced = typed.pop();
+			deleted.add(backspaced);
+			makeLabel();
+		}
+		frame.pack();
 	}
 	
 	
