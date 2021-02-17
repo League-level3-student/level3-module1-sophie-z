@@ -1,5 +1,10 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class _02_LogSearch {
   /* 
@@ -29,5 +34,24 @@ public class _02_LogSearch {
 	 * 				is not in the list. 
 	 *
 	 * */
+	
+	HashMap <Integer, String> hm = new HashMap<Integer, String>();
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton add = new JButton();
+	JButton search = new JButton();
+	JButton view = new JButton();
+	JButton remove = new JButton();
+	
+	void setup() {
+		HashMap <Integer, String> hm = new HashMap<Integer, String>();
+		frame.setVisible(true);
+		panel.add(add);
+		panel.add(search);
+		panel.add(view);
+		panel.add(remove);
+		frame.add(panel);
+		frame.pack();
+	}
 	
 }

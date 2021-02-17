@@ -29,14 +29,23 @@ public class StringIntegerPair {
 		//E. set the last element of the new int array to the passed in value
 		ints[values.length] = value;
 		//F. iterate through the keys and values and copy the elements to the new arrays
-		
+		for(int i = 0; i<keys.length; i++) {
+			keys[i] = strings[i];
+		}
+		for(int i = 0; i<values.length; i++) {
+			values[i] = ints[i];
+		}
 		//G. Set the keys and values arrays equal to the new arrays created in steps B and C.
+		keys = strings;
+		values = ints;
 	}
 	
 	//5. Complete the method so it returns the value located at the passed in key.
 	//   If the key does not exist, return Integer.MIN_VALUE.
 	public int get(String key) {
-		return 0;
+		int k = Integer.parseInt(key);
+		return values[k];
+		
 	}
 	
 	//6. Complete the containsKey method so that it returns true if the
