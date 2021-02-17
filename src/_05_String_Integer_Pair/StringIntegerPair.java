@@ -2,27 +2,32 @@ package _05_String_Integer_Pair;
 
 public class StringIntegerPair {
 	//1. create a private array of Strings called keys. Don't initialize it.
-
+	private String[] keys;
 	//2. create a private array of integers called values.
-	
+	private int[] values = new int[] {};
 	StringIntegerPair(){
 		//3. initialize both member arrays to a length of 0
-	}
+		keys = new String[0];
+		}
 	
 	// 4. Complete the steps in the put method
 	public void put(String key, int value) {
 		//A. iterate through the keys. If you find a key that matches
 		//   the passed in String, set the value at that location to the
 		//   passed in value and return from the method.
-		
+		for(int i = 0; i<keys.length; i++) {
+			if(keys[i].equals(key)) {
+				keys[i].equals(key);
+			}
+		}
 		//B. create a String array that is one element longer than the keys
-		
+		String strings[] = new String[keys.length+1];
 		//C. create an integer array that is one element longer than values
-		
+		int ints[] = new int[values.length+1];
 		//D. set the last element of the new String array to the passed in key
-		
+		strings[keys.length].equals(key);
 		//E. set the last element of the new int array to the passed in value
-		
+		ints[values.length] = value;
 		//F. iterate through the keys and values and copy the elements to the new arrays
 		
 		//G. Set the keys and values arrays equal to the new arrays created in steps B and C.
