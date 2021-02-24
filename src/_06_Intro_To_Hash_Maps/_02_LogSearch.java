@@ -1,12 +1,15 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class _02_LogSearch {
+public class _02_LogSearch implements ActionListener {
   /* 
 	 * Crate a HashMap of Integers for the keys and Strings for the values.
 	 * Create a GUI with three buttons. 
@@ -38,10 +41,10 @@ public class _02_LogSearch {
 	HashMap <Integer, String> hm = new HashMap<Integer, String>();
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-	JButton add = new JButton();
-	JButton search = new JButton();
-	JButton view = new JButton();
-	JButton remove = new JButton();
+	JButton add = new JButton("ADD ENTRY");
+	JButton search = new JButton("SEARCH BY ID");
+	JButton view = new JButton("VIEW LIST");
+	JButton remove = new JButton("REMOVE ENTRY");
 	
 	void setup() {
 		HashMap <Integer, String> hm = new HashMap<Integer, String>();
@@ -51,7 +54,48 @@ public class _02_LogSearch {
 		panel.add(view);
 		panel.add(remove);
 		frame.add(panel);
+		add.addActionListener(this);
+		search.addActionListener(this);
+		view.addActionListener(this);
+		remove.addActionListener(this);
 		frame.pack();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		if(arg0.getSource().equals(add)) {
+			String ID = JOptionPane.showInputDialog("Please enter the ID of this guest: ");
+			int id = Integer.parseInt(ID);
+			String name = JOptionPane.showInputDialog("Please enter the name of this guest: ");
+			hm.entrySet();
+			hm.put(id, name);
+		}
+		if(arg0.getSource().equals(search)) {
+			String searched = JOptionPane.showInputDialog("Please enter the ID of the guest you are searching up: ");
+			int searching = Integer.parseInt(searched);
+			if(hm.get(searching) == null) {
+				JOptionPane.showMessageDialog(null, "There is no guest with that ID.");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Guest Name: " + hm.get(searching));
+			}
+		}
+		if(arg0.getSource().equals(view)) {
+			for(int i = 0; i<hm.size(); i++) {
+				JOptionPane.showMessageDialog(null, "ID: " + hm.get(i) + " Guest Name: " + hm.get(i));
+			}
+		}
+		if(arg0.getSource().equals(remove)) {
+			String removed = JOptionPane.showInputDialog("Please enter the ID of the guest you would like to remove: ");
+			int removing = Integer.parseInt(removed);
+			if(hm.get(removing) == null) {
+				JOptionPane.showMessageDialog(null, "There is no guest with that ID.");
+			}
+			else {
+				hm.remove(removing);
+			}
+		}
 	}
 	
 }
